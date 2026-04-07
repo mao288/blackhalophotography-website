@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Halo Photography — Benjamín Luna</title>
+  <meta name="description" content="Benjamín Luna — Fotógrafo de música en Ciudad de México.">
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/diobgaxfl/image/upload/v1771508059/Black_Halo_vector-1_ez5mld.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Franklin:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .hero{position:relative;height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+    .hero-bg{position:absolute;inset:0}
+    .hero-bg-image{position:absolute;inset:0;background-color:var(--black);background-position:center;background-size:cover;background-repeat:no-repeat;transform:scale(1.1);animation:hero-zoom 12s ease-out forwards}
+    .hero-vignette{position:absolute;inset:0;box-shadow:inset 0 0 200px rgba(0,0,0,.8)}
+    .hero-content{position:relative;z-index:2;padding:0 48px 80px}
+    .hero-logo{width:clamp(100px,15vw,200px);height:auto;object-fit:contain;margin-bottom:24px;opacity:0;animation:fadeUp 1s ease .6s forwards;filter:drop-shadow(0 0 40px rgba(201,168,76,.15))}
+    .hero-label{font-family:var(--sans);font-size:.62rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;opacity:0;animation:fadeUp 1s ease .8s forwards}
+    .hero-title{font-family:var(--serif);font-size:clamp(3rem,8vw,7.5rem);font-weight:300;line-height:.95;letter-spacing:-.02em;color:var(--white);margin-bottom:24px;opacity:0;animation:fadeUp 1.2s ease 1s forwards}
+    .hero-title em{font-style:italic;color:var(--accent)}
+    .hero-sub{font-size:.85rem;font-weight:200;letter-spacing:.06em;color:var(--muted);max-width:400px;opacity:0;animation:fadeUp 1s ease 1.3s forwards}
+    .hero-scroll{position:absolute;bottom:32px;right:48px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s ease 1.8s forwards}
+    .hero-scroll span{font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl}
+    .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scroll-pulse 2s ease-in-out infinite}
+    @keyframes scroll-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+    .home-gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:3px;margin-top:56px}
+    .home-gallery-item{position:relative;overflow:hidden;aspect-ratio:3/4}
+    .home-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease,filter .5s ease;filter:grayscale(30%) contrast(1.05)}
+    .home-gallery-item:hover img{transform:scale(1.06);filter:grayscale(0%) contrast(1.1)}
+    .hgo{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.92) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.15) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:32px 28px;transition:background .4s ease}
+    .home-gallery-item:hover .hgo{background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.1) 50%,rgba(10,10,10,0) 100%)}
+    .hgo .cat-label{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+    .hgo h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--white);margin-bottom:12px}
+    .hgo .vl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--light);display:inline-flex;align-items:center;gap:6px;opacity:0;transform:translateY(8px);transition:all .4s ease}
+    .home-gallery-item:hover .vl{opacity:1;transform:translateY(0)}
+    .vl svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+    .marquee-section{padding:48px 0;overflow:hidden;border-top:1px solid var(--mid);border-bottom:1px solid var(--mid);background:var(--off-black)}
+    .marquee-track{display:flex;width:max-content;animation:marquee-scroll 35s linear infinite}
+    .marquee-track:hover{animation-play-state:paused}
+    .marquee-item{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3.5rem);font-weight:300;font-style:italic;color:var(--subtle);white-space:nowrap;padding:0 40px;transition:color .3s ease}
+    .marquee-item:hover{color:var(--accent)}
+    .marquee-sep{font-size:clamp(1rem,2vw,1.5rem);color:var(--accent);padding:0 12px;align-self:center;opacity:.35}
+    @keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+    .about-img-wrap{position:relative}.about-img-wrap::before{content:'';position:absolute;top:-14px;left:-14px;width:100%;height:100%;border:1px solid var(--accent-dim);opacity:.25}
+    .about-img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(20%) contrast(1.1);position:relative;z-index:1}
+    .about-text p{font-size:.92rem;color:var(--light);margin-bottom:18px;font-weight:200;line-height:1.8}
+    .about-text em{color:var(--accent);font-style:normal;font-weight:400}
+    .about-stats{display:flex;gap:40px;margin-top:36px;padding-top:28px;border-top:1px solid var(--mid)}
+    .stat h4{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--accent)}
+    .stat span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+    .contact-left p{font-size:.88rem;color:var(--muted);font-weight:200;line-height:1.8;margin-bottom:36px}
+    .channels{display:flex;flex-direction:column;gap:16px}
+    .ch-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--mid);transition:all .3s ease}
+    .ch-item:hover{color:var(--accent);padding-left:10px;border-color:var(--accent-dim)}
+    .ch-item svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
+    .ch-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);min-width:72px}
+    .ch-value{font-family:var(--serif);font-size:1rem;font-weight:400}
+    .contact-form{display:flex;flex-direction:column}
+    .fg{position:relative;border-bottom:1px solid var(--mid)}
+    .fg label{position:absolute;top:22px;left:0;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);pointer-events:none;transition:all .3s ease}
+    .fg input,.fg textarea,.fg select{width:100%;background:transparent;border:none;outline:none;padding:22px 0 10px;font-family:var(--serif);font-size:1.05rem;color:var(--cream);caret-color:var(--accent)}
+    .fg textarea{resize:none;height:90px}.fg select{cursor:pointer;-webkit-appearance:none}
+    .fg select option{background:var(--dark);color:var(--cream)}
+    .fg input:focus~label,.fg textarea:focus~label,.fg input:not(:placeholder-shown)~label,.fg textarea:not(:placeholder-shown)~label{top:2px;font-size:.48rem;color:var(--accent)}
+    .fg:focus-within{border-color:var(--accent-dim)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+    .submit-btn{margin-top:36px;padding:18px 44px;background:transparent;border:1px solid var(--accent);color:var(--accent);font-family:var(--sans);font-size:.68rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;cursor:pointer;transition:all .4s ease;align-self:flex-start;position:relative;overflow:hidden}
+    .submit-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--accent);transition:left .4s ease;z-index:-1}
+    .submit-btn:hover{color:var(--black)}.submit-btn:hover::before{left:0}
+    @media(max-width:1024px){.home-gallery{grid-template-columns:repeat(3,1fr)}.about-grid,.contact-grid{grid-template-columns:1fr;gap:48px}}
+    @media(max-width:768px){.hero{height:75vh;min-height:480px;padding-top:0}.hero-bg-image{background-size:cover;background-position:center center}.hero-logo{width:clamp(80px,20vw,120px)}.hero-content{position:relative;padding:0 20px 40px}.hero-label{font-size:.52rem}.hero-sub{font-size:.78rem}.hero-scroll{display:none}.home-gallery{grid-template-columns:1fr 1fr;gap:10px}.home-gallery-item{aspect-ratio:3/4}.home-gallery-item img{height:100%;object-fit:cover}.hgo{padding:16px 14px}.hgo .cat-label{font-size:.45rem}.hgo h3{font-size:1.1rem;margin-bottom:6px}.hgo .vl{opacity:1;transform:translateY(0);font-size:.5rem}.about-grid{grid-template-columns:1fr;gap:36px}.about-img-wrap::before{display:none}.about-text p{font-size:.84rem}.about-stats{flex-wrap:wrap;gap:24px}.stat h4{font-size:1.6rem}.contact-grid{grid-template-columns:1fr;gap:36px}.contact-left p{font-size:.82rem}.ch-item{padding:12px 0;gap:10px}.ch-label{font-size:.5rem;min-width:60px}.ch-value{font-size:.85rem}.form-row{grid-template-columns:1fr}.submit-btn{width:100%;text-align:center;padding:16px 20px}}
+    @media(max-width:480px){.home-gallery{grid-template-columns:1fr;gap:16px}.hero{height:65vh;min-height:400px}}
+  </style>
+</head>
+<body>
+  <div class="loader" id="loader"><div class="loader-halo"></div><div class="loader-text">Black Halo</div></div>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1771508059/Black_Halo_vector-1_ez5mld.png" alt="Black Halo Photography" class="nav-logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="#work" class="active" data-i18n="nav.work">Work</a></li>
+      <li><a href="#about" data-i18n="nav.about">Acerca de</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contáctame</a></li>
+    </ul>
+    <div class="lang-toggle" aria-label="Cambiar idioma">
+      <button class="lang-opt active" data-lang="es" onclick="setLang('es')">ES</button>
+      <div class="lang-divider"></div>
+      <button class="lang-opt" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu-links">
+      <li><a href="#work" onclick="toggleMobile()" data-i18n="nav.work">Work</a></li>
+      <li><a href="#about" onclick="toggleMobile()" data-i18n="nav.about">Acerca de</a></li>
+      <li><a href="#contact" onclick="toggleMobile()" data-i18n="nav.contact">Contáctame</a></li>
+    </ul>
+    <div class="mobile-lang"><div class="lang-toggle"><button class="lang-opt active" data-lang="es" onclick="setLang('es')">ES</button><div class="lang-divider"></div><button class="lang-opt" data-lang="en" onclick="setLang('en')">EN</button></div></div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg"><div class="hero-bg-image"></div><div class="hero-vignette"></div></div>
+    <div class="hero-content">
+      <div class="hero-label" data-i18n="hero.label">Fotografía Musical — CDMX</div>
+      <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1771508059/Black_Halo_vector-1_ez5mld.png" alt="Black Halo" class="hero-logo">
+      
+      <p class="hero-sub" data-i18n="hero.sub">Capturando la esencia del escenario. Cada disparo, una historia entre la luz y la oscuridad.</p>
+    </div>
+    <div class="hero-scroll"><span data-i18n="hero.scroll">Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="section-padding" id="work" style="background:var(--black)">
+    <div class="section-label reveal" data-i18n="work.label">Portafolio</div>
+    <h2 class="section-title reveal" data-i18n="work.title">Trabajo <em>Seleccionado</em></h2>
+    <div class="section-divider reveal"></div>
+    <div class="home-gallery">
+      <a href="live-show.html" class="home-gallery-item reveal"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772123217/The_warning-39_jg7tki.jpg" alt="Live Show"><div class="hgo"><span class="cat-label" data-i18n="work.cat1.label">01 — En Vivo</span><h3 data-i18n="work.cat1.name">Live Show</h3><span class="vl" data-i18n="work.viewlink">Ver galería</span></div></a>
+      <a href="festivales.html" class="home-gallery-item reveal"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772123215/Spirit26_v9ucil.jpg" alt="Festivales"><div class="hgo"><span class="cat-label" data-i18n="work.cat2.label">02 — Cobertura</span><h3 data-i18n="work.cat2.name">Festivales</h3><span class="vl" data-i18n="work.viewlink">Ver galería</span></div></a>
+      <a href="videos.html" class="home-gallery-item reveal"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163178/SNM_Buscare-16_szjpyn.jpg" alt="Videos"><div class="hgo"><span class="cat-label" data-i18n="work.cat3.label">03 — Producción</span><h3 data-i18n="work.cat3.name">Videos</h3><span class="vl" data-i18n="work.viewlink">Ver galería</span></div></a>
+      <a href="retrato.html" class="home-gallery-item reveal"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772123220/Aitana-45_z4ohci.jpg" alt="Retrato"><div class="hgo"><span class="cat-label" data-i18n="work.cat4.label">04 — Estudio</span><h3 data-i18n="work.cat4.name">Retrato</h3><span class="vl" data-i18n="work.viewlink">Ver galería</span></div></a>
+      <a href="backstage.html" class="home-gallery-item reveal"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772123220/Lola_Indigo-10_jtclpx.jpg" alt="Backstage"><div class="hgo"><span class="cat-label" data-i18n="work.cat5.label">05 — Behind the Lens</span><h3 data-i18n="work.cat5.name">Backstage</h3><span class="vl" data-i18n="work.viewlink">Ver galería</span></div></a>
+    </div>
+  </section>
+
+  <div class="marquee-section"><div class="marquee-track">
+    <span class="marquee-item" data-i18n="marquee.liveshows">Live Shows</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.festivales">Festivales</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.videoclips">Videoclips</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.retratos">Retratos</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.backstage">Backstage</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.promo">Promo Sessions</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.liveshows">Live Shows</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.festivales">Festivales</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.videoclips">Videoclips</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.retratos">Retratos</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.backstage">Backstage</span><span class="marquee-sep">◆</span>
+    <span class="marquee-item" data-i18n="marquee.promo">Promo Sessions</span><span class="marquee-sep">◆</span>
+  </div></div>
+
+  <section class="section-padding" id="about" style="background:var(--off-black)">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772122483/optimized_image_2_cooau5.jpg" alt="Benjamín Luna" class="about-img"></div>
+      <div class="about-text">
+        <div class="section-label reveal" data-i18n="about.label">Acerca de mí</div>
+        <h2 class="section-title reveal">Benjamín <em>Luna</em></h2>
+        <div class="section-divider reveal"></div>
+        <p class="reveal" data-i18n="about.p1">Cada disparo es una declaración de amor a la música. Soy fotógrafo y realizador audiovisual freelance basado en la <em>Ciudad de México</em>, Licenciado en Comunicación Audiovisual, y llevo años traduciendo la energía del escenario en imágenes que se sienten tan viscerales como el sonido mismo.</p>
+        <p class="reveal" data-i18n="about.p2">He tenido el privilegio de capturar a bandas como <em>She No More</em>, <em>Sever the Light</em> y <em>Everlight</em>, así como a artistas internacionales como <em>Epica</em>, <em>Machine Head</em>, <em>Falling in Reverse</em>, <em>Måneskin</em>, <em>Nicki Nicole</em> y <em>Aitana</em> — desde la intimidad de un foro hasta la inmensidad de un festival. Actualmente colaboro de manera frecuente con <em>Los Imaginantes</em> en cobertura de medios.</p>
+        <p class="reveal" data-i18n="about.p3">Mi trabajo no termina donde termina la foto. Creo aftermovies, videoclips y piezas audiovisuales que extienden la narrativa más allá del instante. Colaboro con la disquera <em>Discos Denver</em> en proyectos como <em>Desde la Kloaka</em>, <em>El Camino del Roll</em> y <em>Desarmando la Rola</em> — donde la música y la imagen se funden en una misma historia.</p>
+        <p class="reveal" data-i18n="about.p4">Domino <em>DaVinci Resolve</em>, <em>Premiere</em>, <em>After Effects</em>, <em>Lightroom</em> y <em>Photoshop</em>. Me he formado con el cinefotógrafo <em>Alex Z. Reynaud</em>, en <em>Instituto Imago</em> y en retrato editorial con <em>Elena Novikova</em> — porque creo que el ojo se entrena igual que el oído: con disciplina, curiosidad y una obsesión silenciosa por la luz.</p>
+        <div class="about-stats reveal">
+          <div class="stat"><h4>5+</h4><span data-i18n="about.stat1">Años</span></div>
+          <div class="stat"><h4>200+</h4><span data-i18n="about.stat2">Shows</span></div>
+          <div class="stat"><h4>50+</h4><span data-i18n="about.stat3">Artistas</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-padding" id="contact" style="background:var(--black)">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-label reveal" data-i18n="contact.label">Contacto</div>
+        <h2 class="section-title reveal" data-i18n="contact.title">Hagamos algo <em>increíble</em></h2>
+        <div class="section-divider reveal"></div>
+        <p class="reveal" data-i18n="contact.p">¿Tienes un proyecto en mente? Ya sea un show, una sesión o un videoclip, me encantaría escuchar tu idea.</p>
+        <div class="channels reveal">
+          <a href="/cdn-cgi/l/email-protection#d2b1bdbca6b3b1a6bd92b0beb3b1b98dbab3bebd8da2babda6bdb5a0b3a2baabfcb1bdbf" class="ch-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="ch-label" data-i18n="contact.ch.email">Email</span><span class="ch-value">contacto@black_halo_photography.com</span></a>
+          <a href="https://www.instagram.com/black_halo_photography?igsh=ZTloZGF2bnk3ajI3" target="_blank" class="ch-item"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg><span class="ch-label">Instagram</span><span class="ch-value">@black_halo_photography</span></a>
+          <a href="https://wa.me/5215535730766" target="_blank" class="ch-item"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="ch-label">WhatsApp</span><span class="ch-value" data-i18n="contact.ch.wa">Mensaje directo</span></a>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="fg"><input type="text" placeholder=" " id="name"><label for="name" data-i18n="contact.form.name">Nombre</label></div>
+          <div class="fg"><input type="email" placeholder=" " id="email"><label for="email" data-i18n="contact.form.email">Email</label></div>
+        </div>
+        <div class="fg">
+          <select id="service"><option value="" disabled selected data-i18n="contact.form.opt1">Selecciona un servicio</option><option data-i18n="contact.form.opt2">Fotografía en Vivo</option><option data-i18n="contact.form.opt3">Sesión de Retrato</option><option data-i18n="contact.form.opt4">Producción de Videoclip</option><option data-i18n="contact.form.opt5">Otro</option></select>
+          <label for="service" style="top:2px;font-size:.48rem;color:var(--accent)" data-i18n="contact.form.service">Servicio</label>
+        </div>
+        <div class="fg"><textarea placeholder=" " id="message"></textarea><label for="message" data-i18n="contact.form.message">Cuéntame sobre tu proyecto</label></div>
+        <button class="submit-btn" type="button" data-i18n="contact.form.submit">Enviar Mensaje</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1771508059/Black_Halo_vector-5_w9gk2i.png" alt="Black Halo" class="footer-logo-img"> © 2026</div>
+    <div class="footer-social"><a href="https://www.instagram.com/black_halo_photography?igsh=ZTloZGF2bnk3ajI3" target="_blank">Instagram</a><a href="https://www.facebook.com/share/198tNpvqZ8/?mibextid=wwXIfr" target="_blank">Facebook</a><a href="https://behance.net/blackhalophotography" target="_blank">Behance</a></div>
+    <div class="footer-credit" data-i18n="footer.credit">Diseño por Nocturne Solutions</div>
+  </footer>
+
+  <a href="https://wa.me/5215535730766" target="_blank" class="wa-float" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+  <script src="lang.js"></script>
+  <script src="scripts.js"></script>
+  <script>
+    (function(){
+      var heroImages = [
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163051/Oktrad-47_trboto.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163055/Nicki_Nicole-06_ft9d5w.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163047/LC-29_aqn3wv.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162939/Epica_99_lwxrfp.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163049/kudai-39_jecdnh.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163174/Pierce_the_veil-42_qrbvzo.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163188/SNMMonterreyJPG-47_jylmgl.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163168/SNM_Buscare-24_pavdue.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162922/EpicaLiveP-41_q1vmdc.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162935/David_Bisbal-20_gpirqb.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162922/kimpytown-8_lsgqu6.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772123220/Lola_Indigo-10_jtclpx.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162926/Blind_hex-53_d0fdtr.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163186/Sharon_Portilla-4_grocjg.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/_DSC7744_2_qoywkz.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772123215/Spirit26_v9ucil.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163048/Nervosa-55_ghbc4w.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162925/EPICAGDL-03_mvuf0u.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772123221/Alessana-08_iww86k.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162920/Henttaii-09_qq3xkx.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162930/CArnifex-3_wlvh5q.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772123216/The_warning-47_u0hlhp.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163049/LC-03_wfqscx.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162938/epica-22_azsj5k.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163191/SNMMonterreyJPG-51_nmtwrh.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163176/SNMGDL-02_ozza08.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163047/MNK-07_v5zjx4.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163168/SNMGDL-27_vcroik.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772123218/FallingInReverse-19_sbjyid.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163163/Sharon-9_nlciel.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772123217/The_warning-39_jg7tki.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/ADC-04_ni8vqu.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163169/Pierce_the_veil-29_uzuhgz.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162922/EPICAGDL-28_pqujz1.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163169/STL_San_Luis-026_ikpulb.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163164/Sharon-12_zyatpe.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162923/EPICAGDL-47_uztfbi.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163054/LC-17_dt5uho.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162921/jinjer-94_tcyskv.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162923/EPICAGDL-37_tnw7lv.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163182/SNMMonterreyJPG-43_w26c1v.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163040/Lola_Indigo-10_txifgr.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162940/Alan_Sutton-053_b4wbgg.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772123220/Aitana-45_z4ohci.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162920/Henttaii-05_s9vym2.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163175/PL-01_vfdxio.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163178/SNM_Buscare-16_szjpyn.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163054/Nervosa-48_gncg37.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162925/javier-7_oh5rhc.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163182/SNMPUEBLAJPG-55_xeo16s.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162919/FallingInReverse-06_astccp.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163163/playa_limbo-03_zs8jsv.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163181/SNM_Buscare-20_lsnka0.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163042/LC-26_wvfi7b.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162938/epica-27_ynqh02.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162942/Arch43_mfxk5h.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162918/FallingInReverse-19_kartsy.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162930/btb-20_fhdmuk.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162933/_DSC7688_wmwjwj.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163048/MNK-16_lxu64b.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163046/LC-21_dttu0y.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163042/Nicki-30_b9tr6w.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162926/Carlos-13_bbdphv.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163168/SNMMonterreyJPG-02_kfbiq4.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162919/Fest_Emblema-110_m1luph.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162941/Aitana-78_p8l0hp.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162929/Alessana-16_syeduj.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163176/SNM_Buscare-01_csmzld.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/_DSC5264-Edit_ojinse.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163057/Lola_Indigo-29_jh0ipq.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163190/SNMPUEBLAJPG-13_vy4uze.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163185/STL_San_Luis-070_zgfdvo.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163043/Oktrad-37_s5mqfu.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/epica-33_m2njxz.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162929/Alessana-12_vapxz8.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162929/Einar-22_v60lgs.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162925/Epica-80_epp17r.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163041/Maneskin-41_vdiske.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162921/EpicaLiveP-07_vmw2pm.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163175/Sharon6_kdo9f4.jpg',
+        'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162919/EPICAGDL-36_yi0wx9.jpg'
+      ];
+      var img = heroImages[Math.floor(Math.random() * heroImages.length)];
+      var el = document.querySelector('.hero-bg-image');
+      if(el) el.style.backgroundImage = 'linear-gradient(to bottom,rgba(10,10,10,.2) 0%,rgba(10,10,10,.05) 40%,rgba(10,10,10,.7) 75%,rgba(10,10,10,1) 100%),url(' + img + ')';
+    })();
+  </script>
+</body>
+</html>

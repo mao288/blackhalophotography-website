@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://res.cloudinary.com/diobgaxfl/image/upload/v1771508059/Black_Halo_vector-1_ez5mld.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Libre+Franklin:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Retrato — Black Halo Photography</title>
+</head>
+<body>
+  <div class="loader" id="loader"><div class="loader-halo"></div><div class="loader-text">Black Halo</div></div>
+  <nav id="nav">
+    <a href="index.html" class="nav-logo"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1771508059/Black_Halo_vector-1_ez5mld.png" alt="Black Halo Photography" class="nav-logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="live-show.html" data-i18n="nav.liveshow" >Live Show</a></li>
+      <li><a href="festivales.html" data-i18n="nav.festivales" >Festivales</a></li>
+      <li><a href="videos.html" data-i18n="nav.videos" >Videos</a></li>
+      <li><a href="retrato.html" data-i18n="nav.retrato" class="active">Retrato</a></li>
+      <li><a href="backstage.html" data-i18n="nav.backstage" >Backstage</a></li>
+      <li><a href="index.html#contact" data-i18n="nav.contact">Contáctame</a></li>
+    </ul>
+    <div class="lang-toggle" aria-label="Cambiar idioma">
+      <button class="lang-opt active" data-lang="es" onclick="setLang('es')">ES</button>
+      <div class="lang-divider"></div>
+      <button class="lang-opt" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu-links">
+      <li><a href="live-show.html" onclick="toggleMobile()" data-i18n="nav.liveshow">Live Show</a></li>
+      <li><a href="festivales.html" onclick="toggleMobile()" data-i18n="nav.festivales">Festivales</a></li>
+      <li><a href="videos.html" onclick="toggleMobile()" data-i18n="nav.videos">Videos</a></li>
+      <li><a href="retrato.html" onclick="toggleMobile()" data-i18n="nav.retrato">Retrato</a></li>
+      <li><a href="backstage.html" onclick="toggleMobile()" data-i18n="nav.backstage">Backstage</a></li>
+      <li><a href="index.html#contact" onclick="toggleMobile()" data-i18n="nav.contact">Contáctame</a></li>
+    </ul>
+    <div class="mobile-lang"><div class="lang-toggle"><button class="lang-opt active" data-lang="es" onclick="setLang('es')">ES</button><div class="lang-divider"></div><button class="lang-opt" data-lang="en" onclick="setLang('en')">EN</button></div></div>
+  </div>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" ></div>
+    <div class="page-hero-content">
+      <div class="page-hero-label" data-i18n="ret.hero.label">label</div>
+      <h1 class="page-hero-title">Re<em>trato</em></h1>
+      <p class="page-hero-desc" data-i18n="ret.hero.desc">desc</p>
+    </div>
+  </section>
+
+  <a href="index.html" class="back-link"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg><span data-i18n="back">Volver al inicio</span></a>
+
+  <section class="section-padding">
+    <div class="section-label reveal" data-i18n="ret.section.label">Galería</div>
+    <h2 class="section-title reveal" data-i18n="ret.section.title">title</h2>
+    <div class="section-divider reveal"></div>
+    <div class="photo-grid">
+      <div class="photo-item wide reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163178/SNM_Buscare-16_szjpyn.jpg" alt="She No More — Sesión" loading="lazy">
+        <div class="photo-overlay"><span>She No More</span><h3>Sesión</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163043/Oktrad-37_s5mqfu.jpg" alt="Oktrad — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Oktrad</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772162933/_DSC7688_wmwjwj.jpg" alt="Retrato — Estudio" loading="lazy">
+        <div class="photo-overlay"><span>Retrato</span><h3>Estudio</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163186/Sharon_Portilla-4_grocjg.jpg" alt="Sharon Portilla — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Sharon Portilla</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163181/SNM_Buscare-20_lsnka0.jpg" alt="She No More — Sesión" loading="lazy">
+        <div class="photo-overlay"><span>She No More</span><h3>Sesión</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163176/SNM_Buscare-01_csmzld.jpg" alt="She No More — Sesión" loading="lazy">
+        <div class="photo-overlay"><span>She No More</span><h3>Sesión</h3></div>
+      </div>
+      <div class="photo-item wide reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163175/Sharon6_kdo9f4.jpg" alt="Sharon — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Sharon</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163168/SNM_Buscare-24_pavdue.jpg" alt="She No More — Sesión" loading="lazy">
+        <div class="photo-overlay"><span>She No More</span><h3>Sesión</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163164/Sharon-12_zyatpe.jpg" alt="Sharon — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Sharon</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163163/Sharon-9_nlciel.jpg" alt="Sharon — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Sharon</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772163051/Oktrad-47_trboto.jpg" alt="Oktrad — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Oktrad</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/_DSC7744_2_qoywkz.jpg" alt="Retrato — Estudio" loading="lazy">
+        <div class="photo-overlay"><span>Retrato</span><h3>Estudio</h3></div>
+      </div>
+      <div class="photo-item wide reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/_DSC5264-Edit_ojinse.jpg" alt="Retrato — Estudio" loading="lazy">
+        <div class="photo-overlay"><span>Retrato</span><h3>Estudio</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772162925/javier-7_oh5rhc.jpg" alt="Javier — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Javier</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772162922/kimpytown-8_lsgqu6.jpg" alt="Sharon Portilla — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Sharon Portilla</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772162920/Henttaii-09_qq3xkx.jpg" alt="Henttaii — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Henttaii Creations</span><h3>Retrato</h3></div>
+      </div>
+      <div class="photo-item reveal" onclick="openLightbox(this)">
+        <img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1772162920/Henttaii-05_s9vym2.jpg" alt="Henttaii — Retrato" loading="lazy">
+        <div class="photo-overlay"><span>Henttaii Creations</span><h3>Retrato</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <h3 class="reveal" data-i18n="ret.cta">cta</h3>
+    <a href="index.html#contact" class="cta-btn reveal" data-i18n="ret.cta.btn">Contáctame</a>
+  </div>
+
+  <footer>
+    <div class="footer-left"><img src="https://res.cloudinary.com/diobgaxfl/image/upload/v1771508059/Black_Halo_vector-5_w9gk2i.png" alt="Black Halo" class="footer-logo-img"> © 2026</div>
+    <div class="footer-social"><a href="https://www.instagram.com/black_halo_photography?igsh=ZTloZGF2bnk3ajI3" target="_blank">Instagram</a><a href="https://www.facebook.com/share/198tNpvqZ8/?mibextid=wwXIfr" target="_blank">Facebook</a></div>
+    <div class="footer-credit" data-i18n="footer.credit">Diseño por Nocturne Solutions</div>
+  </footer>
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()"><div class="lightbox-close">&times;</div><img src="" alt="" id="lightboxImg"></div>
+  <a href="https://wa.me/5215535730766" target="_blank" class="wa-float" title="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+  <script src="lang.js"></script>
+  <script src="scripts.js"></script>
+  <script>
+    (function(){
+      var imgs = ['https://res.cloudinary.com/diobgaxfl/image/upload/v1772163178/SNM_Buscare-16_szjpyn.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163043/Oktrad-37_s5mqfu.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162933/_DSC7688_wmwjwj.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163186/Sharon_Portilla-4_grocjg.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163181/SNM_Buscare-20_lsnka0.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163176/SNM_Buscare-01_csmzld.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163175/Sharon6_kdo9f4.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163168/SNM_Buscare-24_pavdue.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163164/Sharon-12_zyatpe.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163163/Sharon-9_nlciel.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772163051/Oktrad-47_trboto.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/_DSC7744_2_qoywkz.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162934/_DSC5264-Edit_ojinse.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162925/javier-7_oh5rhc.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162922/kimpytown-8_lsgqu6.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162920/Henttaii-09_qq3xkx.jpg', 'https://res.cloudinary.com/diobgaxfl/image/upload/v1772162920/Henttaii-05_s9vym2.jpg'];
+      var img = imgs[Math.floor(Math.random() * imgs.length)];
+      var el = document.querySelector('.page-hero-bg');
+      if(el) el.style.backgroundImage = "linear-gradient(to bottom,rgba(10,10,10,.3) 0%,rgba(10,10,10,.1) 30%,rgba(10,10,10,.75) 70%,rgba(10,10,10,1) 100%),url(" + img + ")";
+    })();
+  </script>
+</body>
+</html>
