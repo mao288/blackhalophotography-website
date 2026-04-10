@@ -61,3 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.transitionDelay = `${i * 0.08}s`;
   });
 });
+
+// Contact form → WhatsApp
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.querySelector('.submit-btn');
+  if (btn) {
+    btn.addEventListener('click', function() {
+      var name = document.getElementById('name') ? document.getElementById('name').value.trim() : '';
+      var email = document.getElementById('email') ? document.getElementById('email').value.trim() : '';
+      var service = document.getElementById('service') ? document.getElementById('service').value : '';
+      var message = document.getElementById('message') ? document.getElementById('message').value.trim() : '';
+
+      var text = '¡Hola! Soy ' + (name || 'alguien interesado') + '.';
+      if (email) text += '\nEmail: ' + email;
+      if (service) text += '\nServicio: ' + service;
+      if (message) text += '\n\n' + message;
+
+      window.open('https://wa.me/5215535730766?text=' + encodeURIComponent(text), '_blank');
+    });
+  }
+});
